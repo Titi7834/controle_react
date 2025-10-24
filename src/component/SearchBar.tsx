@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import './SearchBar.css'
 import User from '../model/user'
+import './SearchBar.css'
 
 interface SearchBarProps {
     users: User[] | null;
@@ -18,10 +18,10 @@ function Searchbar({ users, onSearch, sortOrder, onSortChange }: SearchBarProps)
 
         if (!users) return;
 
-        const filteredUsers = users.filter((user) => 
+        const filteredUsers = users.filter((user) =>
             user.firstname.toLowerCase().includes(value.toLowerCase()) ||
             user.lastname.toLowerCase().includes(value.toLowerCase()) ||
-            user.email.toLowerCase().includes(value.toLowerCase())
+            (user.email && user.email.toLowerCase().includes(value.toLowerCase()))
         );
 
         onSearch(filteredUsers);
@@ -29,22 +29,29 @@ function Searchbar({ users, onSearch, sortOrder, onSortChange }: SearchBarProps)
 
     return (
         <div className="search-container">
-            <input 
+            <input
                 type="text"
-                name="searchbar" 
-                id="searchbar" 
+                name="searchbar"
+                id="searchbar"
                 value={searchTerm}
-                placeholder="Recherchez ici (nom, prénom, email)" 
+                placeholder="Recherchez (nom, prénom, email)"
                 onChange={handleSearch}
                 className="search-input"
+                aria-label="Recherche utilisateur"
             />
-            <select 
-                value={sortOrder} 
+
+            <label htmlFor="sortSelect" className="sr-only">Trier</label>
+            <select
+                id="sortSelect"
+                value={sortOrder}
                 onChange={(e) => onSortChange(e.target.value)}
                 className="sort-select"
             >
-                <option value="name">Trier par nom</option>
-                <option value="age">Trier par âge</option>
+                <option value="name:asc">Nom (A → Z)</option>
+                <option value="name:desc">Nom (Z → A)</option>
+                <option value="age:asc">Âge (↑)</option>
+                <option value="age:desc">Âge (↓)</option>
+                <option value="fav:first">Favoris d'abord</option>
             </select>
         </div>
     );
