@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { getUsers } from '../data/data'
 import User from '../model/user'
+import UserCard from './UserCard'
 import './UserList.css'
 
 function ListUser({ users, setUsers }: { users: User[] | null, setUsers: (ps: User[]) => void }) {
@@ -21,21 +21,7 @@ function ListUser({ users, setUsers }: { users: User[] | null, setUsers: (ps: Us
     return (
         <>
             <h1>Users List</h1>
-            <div className="card">
-                {users.map(user => (
-                    <Link
-                        to={`/detail/${user.id}`}
-                        key={user.id}
-                        style={{ textDecoration: 'none', color: 'inherit' }}
-                    >
-                        <div className="cardUser" style={{ cursor: 'pointer' }}>
-                            <span className="name">{user.firstname} {user.lastname}</span>
-                            <img src={user.photo} alt="image produit" />
-                            <span className="email">E-mail : {user.email}</span>
-                        </div>
-                    </Link>
-                ))}
-            </div>
+            <UserCard users={users} />
         </>
     )
 }

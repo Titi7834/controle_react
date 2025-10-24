@@ -14,6 +14,7 @@ function DetailUser({ users }: { users: User[] | null }) {
         <div className="user-detail">
             <h2>{user.firstname} {user.lastname}</h2>
             <button onClick={() => navigate(-1)} className="back-button">← Retour</button>
+
             <div className="user-content">
                 <div className="user-image">
                     <img src={user.photo} alt={user.firstname} />
