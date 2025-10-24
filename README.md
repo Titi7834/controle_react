@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+<h1>Projet Contrôle REACT</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h2>Fonctionnement du site</h2>
+<div>
+  Afin d'avoir un site fonctionnel il faut impérativement react, react-router-dom, react-hot-toast :
+<code>
+    npm install react
+    npm install react-router-dom
+    npm install react-hot-toast
+</code>
+  Pour pouvoir lancer le site il faut éxecuter la commande suivante :
+<code>
+    npm run dev
+</code>
+</div>
 
-Currently, two official plugins are available:
+<h2>App.tsx</h2>
+<div>
+  Dans App.tsx on a l'appel des routes nécessaires au projet.
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h2>main.tsx</h2>
+<div>
+  On a l'appel de App afin de pouvoir tout afficher sur le site.
+</div>
 
-## React Compiler
+<h2>Data.tsx</h2>
+<div>
+  Permet d'appeler l'API https://dummyjson.com/users afin de récupérer tous les users on ajoute ?limit=0 afin de récupérer toutes les entrées.
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<h2>User.tsx</h2>
+<div>
+  C'est la classe user qui permet de stocker les informations de chaque user et de ne pas aller les récupérer tout le temps dans l'API.
+</div>
 
-## Expanding the ESLint configuration
+<h2>UserList.tsx</h2>
+<div>
+  Permet de filtrer des informations et afficher les différents modules.
+</div>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<h2>UserCard.tsx</h2>
+<div>
+  Permet d'afficher toutes les cards des users pour l'affichage général et l'appel UserDetail pour les détails de chaque card.
+</div>
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+<h2>UserDetail.tsx</h2>
+<div>
+  Permet d'afficher les détails d'un utilisateur en particulier.
+</div>
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+<h2>Theme</h2>
+<div>
+  Permet de gérer le thème de l'écran grâce à un bouton et la conservation de l'état.
+</div>
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+<h2>Search</h2>
+<div>
+  Permet d'afficher une barre de recherche qui vérifie dans les noms, prénoms et email afin de trouver l'user voulu. Il y a également le tri qui est fait ici.
+</div>
