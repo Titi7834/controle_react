@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { getUsers } from '../data/data'
 import User from '../model/user'
 import UserCard from './UserCard'
@@ -82,7 +83,7 @@ function UserList({ users, setUsers }: { users: User[] | null, setUsers: (ps: Us
     const totalPages = filteredUsers ? Math.ceil(filteredUsers.length / usersPerPage) : 0;
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-    if (error) return <div>Erreur : {error}</div>
+    if (error) return <div>Erreur : {error}<br /><br /><Link to={'/'}><button >RAFRAICHIR</button></Link></div>
     if (loading) return <LoadingSpinner />
     if (!users || !filteredUsers) return <div>Chargement...</div>
 
