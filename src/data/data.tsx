@@ -1,7 +1,7 @@
 import User from '../model/user';
 
 async function getUsers() {
-    const fakeAPI = fetch('https://dummyjson.com/users')
+    const fakeAPI = fetch('https://dummyjson.com/users?limit=0')
         .then(res => res.json())
         .then(data => data.users);
 
