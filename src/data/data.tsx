@@ -1,9 +1,14 @@
 import User from '../model/user';
 
+function sleep(ms: number){
+    return new Promise((resolve => setTimeout(resolve,ms)))
+}
+
 async function getUsers() {
     const fakeAPI = fetch('https://dummyjson.com/users?limit=0')
         .then(res => res.json())
         .then(data => data.users);
+    {await sleep(1000)} 
 
     return new Promise<User[]>(async (resolve) => {
         const productsData = await fakeAPI;
