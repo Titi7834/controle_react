@@ -1,6 +1,6 @@
 import User from '../model/user';
 
-async function getProducts() {
+async function getUsers() {
     const fakeAPI = fetch('https://dummyjson.com/users')
         .then(res => res.json())
         .then(data => data.users);
@@ -9,8 +9,8 @@ async function getProducts() {
         const productsData = await fakeAPI;
         const products: User[] = productsData.map((util: any) => new User(
             util.id,
-            util.firstname,
-            util.lastname,
+            util.firstName,
+            util.lastName,
             util.image,
             util.email,
             util.age,
@@ -23,4 +23,4 @@ async function getProducts() {
     });
 }
 
-export { getProducts };
+export { getUsers };
