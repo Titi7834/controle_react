@@ -5,9 +5,11 @@ import User from '../model/user'
 interface SearchBarProps {
     users: User[] | null;
     onSearch: (filteredUsers: User[]) => void;
+    sortOrder: string;
+    onSortChange: (sortOrder: string) => void;
 }
 
-function Searchbar({ users, onSearch }: SearchBarProps) {
+function Searchbar({ users, onSearch, sortOrder, onSortChange }: SearchBarProps) {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +38,14 @@ function Searchbar({ users, onSearch }: SearchBarProps) {
                 onChange={handleSearch}
                 className="search-input"
             />
+            <select 
+                value={sortOrder} 
+                onChange={(e) => onSortChange(e.target.value)}
+                className="sort-select"
+            >
+                <option value="name">Trier par nom</option>
+                <option value="age">Trier par âge</option>
+            </select>
         </div>
     );
 }
