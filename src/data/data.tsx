@@ -14,9 +14,10 @@ async function getUsers() {
             util.image,
             util.email,
             util.age,
-            util.company,
+            util.company.name,
+            util.company.title,
             util.address.city,
-            util.bloodgroup,
+            util.bloodGroup,
             util.height
         ));
         resolve(products);

@@ -1,0 +1,49 @@
+.user-detail {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.user-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.user-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.age {
+    font-size: 24px;
+    font-weight: bold;
+    color: #97abbf;
+}
+
+.company_name {
+    color: #7f8c8d;
+    font-size: 18px;
+}
+
+.company_job {
+    color: #7f8c8d;
+    font-size: 18px;
+}
+
+.bloodgroup {
+    line-height: 1.6;
+}
+
+.taille {
+    color: #f39c12;
+    font-weight: bold;
+}
