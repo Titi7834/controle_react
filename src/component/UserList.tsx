@@ -7,7 +7,6 @@ import Searchbar from './SearchBar'
 import LoadingSpinner from './Loading'
 import { FavoritesService } from './Favorite'
 import { ThemeProvider } from './Theme'
-import ThemeToggle from './ThemeToggle'
 
 function UserList({ users, setUsers }: { users: User[] | null, setUsers: (ps: User[]) => void }) {
     const [error, setError] = useState<string | null>(null)
@@ -89,34 +88,33 @@ function UserList({ users, setUsers }: { users: User[] | null, setUsers: (ps: Us
 
     return (
         <>
-        <ThemeProvider>
-            <h1>Users List</h1>
-            <ThemeToggle />
-            <Searchbar
-                users={users}
-                onSearch={handleSearch}
-                sortOrder={sortOrder}
-                onSortChange={handleSort}
-            />
+            <ThemeProvider>
+                <h1>Users List</h1>
+                <Searchbar
+                    users={users}
+                    onSearch={handleSearch}
+                    sortOrder={sortOrder}
+                    onSortChange={handleSort}
+                />
 
-            <div className="users-container">
-                {currentUsers.map(user => (
-                    <UserCard user={user} key={user.id} />
-                ))}
-            </div>
+                <div className="users-container">
+                    {currentUsers.map(user => (
+                        <UserCard user={user} key={user.id} />
+                    ))}
+                </div>
 
-            <div className="pagination">
-                {Array.from({ length: totalPages }, (_, i) => (
-                    <button
-                        key={i + 1}
-                        onClick={() => paginate(i + 1)}
-                        className={`page-button ${currentPage === i + 1 ? 'active' : ''}`}
-                    >
-                        {i + 1}
-                    </button>
-                ))}
-            </div>
-        </ThemeProvider>
+                <div className="pagination">
+                    {Array.from({ length: totalPages }, (_, i) => (
+                        <button
+                            key={i + 1}
+                            onClick={() => paginate(i + 1)}
+                            className={`page-button ${currentPage === i + 1 ? 'active' : ''}`}
+                        >
+                            {i + 1}
+                        </button>
+                    ))}
+                </div>
+            </ThemeProvider>
         </>
     )
 }
