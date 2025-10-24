@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import User from '../model/user'
+import User from '../../model/user'
 import './SearchBar.css'
 
 interface SearchBarProps {

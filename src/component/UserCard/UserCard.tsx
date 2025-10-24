@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast'
-import { FavoritesService } from './Favorite';
-import { useTheme } from './Theme';
-import User from '../model/user';
+import { FavoritesService } from '../Favorite/Favorite';
+import { useTheme } from '../Theme/Theme';
+import User from '../../model/user';
 import './UserCard.css'
 
 function UserCard({ user }: { user: User }) {

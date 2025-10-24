@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ListUser from './component/UserList'
 import User from './model/user'
-import DetailUser from './component/UserDetail'
+import DetailUser from './component/UserDetail/UserDetail'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 

@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import User from '../model/user'
+import User from '../../model/user'
 import './UserDetail.css'
 
 function DetailUser({ users }: { users: User[] | null }) {
