@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast'
 import { FavoritesService } from './Favorite';
 import { useTheme } from './Theme';
 import User from '../model/user';
@@ -11,8 +12,14 @@ function UserCard({ user }: { user: User }) {
 
     const handleFavorite = (e: React.MouseEvent) => {
         e.preventDefault();
-        setIsFavorite(!isFavorite);
+        const newFav = !isFavorite
+        setIsFavorite(newFav);
         FavoritesService.toggleFavorite(user.id);
+        if (newFav) {
+            toast.success(`${user.firstname} ajouté aux favoris`);
+        } else {
+            toast.error(`${user.firstname} retiré des favoris`);
+        }
     };
 
     return (

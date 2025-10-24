@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
+import 'react-toastify/dist/ReactToastify.css'
 import { getUsers } from '../data/data'
 import User from '../model/user'
 import UserCard from './UserCard'
@@ -8,6 +10,7 @@ import Searchbar from './SearchBar'
 import LoadingSpinner from './Loading'
 import { FavoritesService } from './Favorite'
 import { ThemeProvider } from './Theme'
+import ThemeToggle from './ThemeToggle'
 
 function UserList({ users, setUsers }: { users: User[] | null, setUsers: (ps: User[]) => void }) {
     const [error, setError] = useState<string | null>(null)
@@ -91,6 +94,7 @@ function UserList({ users, setUsers }: { users: User[] | null, setUsers: (ps: Us
         <>
             <ThemeProvider>
                 <h1>Users List</h1>
+                <ThemeToggle />
                 <Searchbar
                     users={users}
                     onSearch={handleSearch}
@@ -102,6 +106,33 @@ function UserList({ users, setUsers }: { users: User[] | null, setUsers: (ps: Us
                     {currentUsers.map(user => (
                         <UserCard user={user} key={user.id} />
                     ))}
+                    <Toaster
+                        position="top-center"
+                        reverseOrder={false}
+                        gutter={8}
+                        containerClassName=""
+                        containerStyle={{}}
+                        toasterId="default"
+                        toastOptions={{
+                            // Define default options
+                            className: '',
+                            duration: 5000,
+                            removeDelay: 1000,
+                            style: {
+                                background: '#363636',
+                                color: '#fff',
+                            },
+
+                            // Default options for specific types
+                            success: {
+                                duration: 3000,
+                                iconTheme: {
+                                    primary: 'green',
+                                    secondary: 'black',
+                                },
+                            },
+                        }}
+                    />
                 </div>
 
                 <div className="pagination">

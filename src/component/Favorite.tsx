@@ -11,6 +11,7 @@ export const FavoritesService = {
             : [...favorites, userId];
         
         localStorage.setItem('favorites', JSON.stringify(newFavorites));
+        
         return newFavorites;
     },
 

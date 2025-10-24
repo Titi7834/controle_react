@@ -1,3 +1,7 @@
+.Toastify__toast-container {
+    z-index: 9999 !important;
+}
+
 .users-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
